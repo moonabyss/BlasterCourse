@@ -8,6 +8,7 @@
 
 class UCameraComponent;
 class USpringArmComponent;
+class UWidgetComponent;
 
 UCLASS()
 class BLASTER_API ABlasterCharacter : public ACharacter
@@ -37,5 +38,8 @@ private:
 
 	UPROPERTY(Category = "Camera", VisibleAnywhere)
 	UCameraComponent* FollowCamera;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UWidgetComponent* OverheadWidget;
 
 };
