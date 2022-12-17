@@ -17,6 +17,7 @@ enum class EWeaponState : uint8
 };
 
 class USphereComponent;
+class UWidgetComponent;
 
 UCLASS()
 class BLASTER_API AWeapon : public AActor
@@ -33,6 +34,8 @@ protected:
 public:	
 
 protected:
+	UFUNCTION()
+	void OnSphereOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	
 private:
 	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
@@ -41,5 +44,9 @@ private:
 	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
 	USphereComponent* AreaSphere;
 
+	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
  	EWeaponState WeaponState;
+
+	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
+	UWidgetComponent* PickupWidget;
 };
