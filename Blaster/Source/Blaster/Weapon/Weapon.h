@@ -32,6 +32,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	FORCEINLINE void SetWeaponState(EWeaponState State) { WeaponState = State; }
+
 	void ShowPickupWidget(bool bShowWidget);
 
 protected:
