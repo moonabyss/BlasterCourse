@@ -31,22 +31,25 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:	
+public:
+	void ShowPickupWidget(bool bShowWidget);
 
 protected:
 	UFUNCTION()
 	void OnSphereOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
+	void OnSphereOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 	
 private:
-	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* WeaponMesh;
 
-	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere)
 	USphereComponent* AreaSphere;
+
+	UPROPERTY(VisibleAnywhere)
+	UWidgetComponent* PickupWidget;
 
 	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
  	EWeaponState WeaponState;
-
-	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
-	UWidgetComponent* PickupWidget;
 };
