@@ -10,7 +10,7 @@ UENUM(BlueprintType)
 enum class EWeaponState : uint8
 {
 	EWS_Initial UMETA(DisplayName = "Initial State"),
-	EWS_Equiupped UMETA(DisplayName = "Equiupped"),
+	EWS_Equipped UMETA(DisplayName = "Equiupped"),
 	EWS_Dropped UMETA(DisplayName = "Dropped"),
 
 	EWS_MAX UMETA(DisplayName = "DefaultMAX")
@@ -27,13 +27,13 @@ class BLASTER_API AWeapon : public AActor
 public:	
 	AWeapon();
 	virtual void Tick(float DeltaTime) override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 protected:
 	virtual void BeginPlay() override;
 
 public:
-	FORCEINLINE void SetWeaponState(EWeaponState State) { WeaponState = State; }
-
+	void SetWeaponState(EWeaponState State);
 	void ShowPickupWidget(bool bShowWidget);
 
 protected:
@@ -52,6 +52,9 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* PickupWidget;
 
-	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere)
+	UPROPERTY(Category = "Weapon Properties", VisibleAnywhere, ReplicatedUsing = OnRep_WeaponState)
  	EWeaponState WeaponState;
+
+	UFUNCTION()
+	void OnRep_WeaponState();
 };
