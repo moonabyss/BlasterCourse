@@ -30,6 +30,7 @@ protected:
 
 public:
 	void SetOverlappingWeapon(AWeapon* Weapon);
+	bool IsWeaponEquipped();
 	
 protected:
 	void MoveForward(float Value);

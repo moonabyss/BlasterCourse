@@ -162,3 +162,8 @@ void ABlasterCharacter::ServerEquipButtonPress_Implementation()
 		Combat->EquipWeapon(OverlappingWeapon);
 	}
 }
+
+bool ABlasterCharacter::IsWeaponEquipped()
+{
+	return (IsValid(Combat) && IsValid(Combat->EquippedWeapon));
+}

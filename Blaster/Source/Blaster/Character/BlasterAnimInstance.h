@@ -32,4 +32,7 @@ private:
 
 	UPROPERTY(Category = "Movement", BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	bool bIsAccelerating;
+
+	UPROPERTY(Category = "Movement", BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	bool bWeaponEquipped;
 };
